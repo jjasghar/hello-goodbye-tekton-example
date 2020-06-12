@@ -10,11 +10,14 @@ This is a simple example for `tekton`, running on `kind`.
 kind create cluster
 kubectl cluster-info --context kind-kind
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
-tekton/
+git clone https://github.com/jjasghar/hello-goodbye-tekton-example.git
+cd hello-goodbye-tekton-example
 kubectl apply -f hello-world-task.yaml
 kubectl create -f hello-world-taskRun.yaml
-kubectl apply -f goodye-world-task.yaml
+kubectl apply -f goodbye-world-task.yaml
 kubectl create -f goodbye-world-taskRun.yaml
+kubectl apply -f pipeline-hello-goodbye.yaml
+kubectl create -f pipeline-hello-goodbye-run.yaml
 tkn pipelinerun logs --last
 bash check.sh
 kind delete cluster
